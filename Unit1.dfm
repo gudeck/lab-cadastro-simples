@@ -67,6 +67,81 @@ object Form1: TForm1
       TabOrder = 0
       object AbaDados: TTabSheet
         Caption = 'Dados'
+        object LabelMedia: TLabel
+          Left = 193
+          Top = 9
+          Width = 28
+          Height = 13
+          Caption = 'M'#233'dia'
+          Color = clWhite
+          ParentColor = False
+        end
+        object LabelDescricao: TLabel
+          Left = 20
+          Top = 76
+          Width = 46
+          Height = 13
+          Caption = 'Descricao'
+          Color = clWhite
+          ParentColor = False
+        end
+        object LabelDataCriacao: TLabel
+          Left = 345
+          Top = 9
+          Width = 62
+          Height = 13
+          Caption = 'Data Cria'#231#227'o'
+          Color = clWhite
+          ParentColor = False
+        end
+        object EditNome: TLabeledEdit
+          Left = 20
+          Top = 25
+          Width = 121
+          Height = 21
+          EditLabel.Width = 27
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Nome'
+          EditLabel.Color = clWhite
+          EditLabel.ParentColor = False
+          MaxLength = 80
+          TabOrder = 0
+        end
+        object EditMedia: TMaskEdit
+          Left = 193
+          Top = 25
+          Width = 110
+          Height = 21
+          EditMask = '##,##;0; '
+          MaxLength = 5
+          TabOrder = 1
+          Text = ''
+        end
+        object MemoDescricao: TMemo
+          Left = 20
+          Top = 92
+          Width = 435
+          Height = 125
+          MaxLength = 400
+          TabOrder = 2
+        end
+        object CheckBoxOpcional: TCheckBox
+          Left = 20
+          Top = 53
+          Width = 97
+          Height = 17
+          Caption = 'Opcional'
+          TabOrder = 3
+        end
+        object DatePickerDataCriacao: TDateTimePicker
+          Left = 345
+          Top = 25
+          Width = 110
+          Height = 21
+          Date = 43995.000000000000000000
+          Time = 0.433053587963513600
+          TabOrder = 4
+        end
       end
       object AbaBuscar: TTabSheet
         Caption = 'Buscar'
