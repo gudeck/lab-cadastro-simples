@@ -30,9 +30,17 @@ type
     LabelDataCriacao: TLabel;
     ADOConnection: TADOConnection;
     ADOQuery: TADOQuery;
+    EditBuscaId: TLabeledEdit;
+    EditBuscaNome: TLabeledEdit;
+    ButtonId: TButton;
+    ButtonNome: TButton;
     procedure LimparCadastro;
+    procedure LimparBusca;
+    procedure PreencherCadastro;
     procedure ButtonInserirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure ButtonIdClick(Sender: TObject);
+    procedure ButtonNomeClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,6 +53,14 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm1.ButtonIdClick(Sender: TObject);
+begin
+  ADOQuery.SQL.Text := 'SELECT * FROM lab.cadastro.DISCIPLINA WHERE ID=:id';
+  ADOQuery.Parameters.ParamByName('id').Value := EditBuscaId.Text;
+  ADOQuery.Open;
+  PreencherCadastro;
+end;
 
 procedure TForm1.ButtonInserirClick(Sender: TObject);
 begin
@@ -71,9 +87,19 @@ begin
 
 end;
 
+procedure TForm1.ButtonNomeClick(Sender: TObject);
+begin
+  ADOQuery.SQL.Text :=
+    'SELECT * FROM lab.cadastro.DISCIPLINA WHERE NOME LIKE ''%' +
+    EditBuscaNome.Text + '%''';
+  ADOQuery.Open;
+  PreencherCadastro;
+end;
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   EditDataCriacao.Date := Now;
+  ContainerCrud.ActivePageIndex := 0;
 end;
 
 procedure TForm1.LimparCadastro;
@@ -83,6 +109,29 @@ begin
   EditDataCriacao.Date := Now;
   CheckBoxOpcional.Checked := false;
   EditDescricao.Clear;
+end;
+
+procedure TForm1.LimparBusca;
+begin
+  EditBuscaId.Clear;
+  EditBuscaNome.Clear;
+end;
+
+procedure TForm1.PreencherCadastro;
+begin
+  if not ADOQuery.IsEmpty then
+  begin
+    EditNome.Text := ADOQuery.FieldByName('NOME').AsString;
+    EditMedia.Text := ADOQuery.FieldByName('MEDIA').AsString;
+    EditDataCriacao.Date := ADOQuery.FieldByName('DATA_CRIACAO').AsDateTime;
+    CheckBoxOpcional.Checked := ADOQuery.FieldByName('OPCIONAL').AsBoolean;
+    EditDescricao.Text := ADOQuery.FieldByName('DESCRICAO').AsString;
+
+    ContainerCrud.ActivePageIndex := 0;
+    LimparBusca;
+  end
+  else
+    ShowMessage('Não foram encontrados registros.');
 end;
 
 end.

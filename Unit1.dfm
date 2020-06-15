@@ -155,8 +155,45 @@ object Form1: TForm1
       object AbaBuscar: TTabSheet
         Caption = 'Buscar'
         ImageIndex = 1
-        ExplicitWidth = 727
-        ExplicitHeight = 360
+        ExplicitLeft = 6
+        object EditBuscaId: TLabeledEdit
+          Left = 20
+          Top = 40
+          Width = 121
+          Height = 21
+          EditLabel.Width = 33
+          EditLabel.Height = 13
+          EditLabel.Caption = 'C'#243'digo'
+          TabOrder = 0
+        end
+        object EditBuscaNome: TLabeledEdit
+          Left = 20
+          Top = 85
+          Width = 121
+          Height = 21
+          EditLabel.Width = 27
+          EditLabel.Height = 13
+          EditLabel.Caption = 'Nome'
+          TabOrder = 1
+        end
+        object ButtonId: TButton
+          Left = 182
+          Top = 38
+          Width = 75
+          Height = 25
+          Caption = 'Buscar'
+          TabOrder = 2
+          OnClick = ButtonIdClick
+        end
+        object ButtonNome: TButton
+          Left = 182
+          Top = 83
+          Width = 75
+          Height = 25
+          Caption = 'Buscar'
+          TabOrder = 3
+          OnClick = ButtonNomeClick
+        end
       end
       object AbaListar: TTabSheet
         Caption = 'Listar'
