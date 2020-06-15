@@ -71,8 +71,7 @@ begin
 
   ADOQuery.Parameters.ParamByName('nome').Value := EditNome.Text;
   ADOQuery.Parameters.ParamByName('descricao').Value := EditDescricao.Text;
-  ADOQuery.Parameters.ParamByName('media').Value :=
-    formatfloat('00.00', (StrToFloat(EditMedia.Text) / 100));
+  ADOQuery.Parameters.ParamByName('media').Value := EditMedia.Text;
   ADOQuery.Parameters.ParamByName('opcional').Value := CheckBoxOpcional.Checked;
   ADOQuery.Parameters.ParamByName('dataCriacao').Value :=
     EditDataCriacao.DateTime;

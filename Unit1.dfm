@@ -88,7 +88,7 @@ object Form1: TForm1
         end
         object LabelDescricao: TLabel
           Left = 20
-          Top = 52
+          Top = 54
           Width = 46
           Height = 13
           Caption = 'Descricao'
@@ -120,9 +120,9 @@ object Form1: TForm1
         object EditMedia: TMaskEdit
           Left = 232
           Top = 25
-          Width = 46
+          Width = 44
           Height = 21
-          EditMask = '##.##;0; '
+          EditMask = '##,##;0; '
           MaxLength = 5
           TabOrder = 1
           Text = ''
@@ -158,7 +158,7 @@ object Form1: TForm1
         ExplicitLeft = 6
         object EditBuscaId: TLabeledEdit
           Left = 20
-          Top = 40
+          Top = 25
           Width = 121
           Height = 21
           EditLabel.Width = 33
@@ -168,7 +168,7 @@ object Form1: TForm1
         end
         object EditBuscaNome: TLabeledEdit
           Left = 20
-          Top = 85
+          Top = 71
           Width = 121
           Height = 21
           EditLabel.Width = 27
@@ -178,7 +178,7 @@ object Form1: TForm1
         end
         object ButtonId: TButton
           Left = 182
-          Top = 38
+          Top = 23
           Width = 75
           Height = 25
           Caption = 'Buscar'
@@ -187,7 +187,7 @@ object Form1: TForm1
         end
         object ButtonNome: TButton
           Left = 182
-          Top = 83
+          Top = 71
           Width = 75
           Height = 25
           Caption = 'Buscar'
