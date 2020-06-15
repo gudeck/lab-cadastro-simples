@@ -179,6 +179,7 @@ var
 begin
   if not ADOQuery.IsEmpty then
   begin
+    ADOQuery.Sort := 'NOME';
     ADOQuery.First;
 
     EditListagem.Lines.Add('Código' + ' - ' + 'Nome' + ' - ' + 'Média' + ' - ' +
