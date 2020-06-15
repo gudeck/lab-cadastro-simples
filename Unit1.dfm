@@ -32,6 +32,7 @@ object Form1: TForm1
       Height = 25
       Caption = 'Inserir'
       TabOrder = 0
+      OnClick = ButtonInserirClick
     end
     object ButtonNovo: TButton
       Left = 106
@@ -110,20 +111,20 @@ object Form1: TForm1
         object EditMedia: TMaskEdit
           Left = 193
           Top = 25
-          Width = 110
+          Width = 106
           Height = 21
-          EditMask = '##,##;0; '
+          EditMask = '##.##;0; '
           MaxLength = 5
           TabOrder = 1
           Text = ''
         end
-        object MemoDescricao: TMemo
+        object EditDescricao: TMemo
           Left = 20
-          Top = 92
+          Top = 95
           Width = 435
           Height = 125
           MaxLength = 400
-          TabOrder = 2
+          TabOrder = 4
         end
         object CheckBoxOpcional: TCheckBox
           Left = 20
@@ -133,14 +134,14 @@ object Form1: TForm1
           Caption = 'Opcional'
           TabOrder = 3
         end
-        object DatePickerDataCriacao: TDateTimePicker
+        object EditDataCriacao: TDateTimePicker
           Left = 345
           Top = 25
           Width = 110
           Height = 21
           Date = 43995.000000000000000000
           Time = 0.433053587963513600
-          TabOrder = 4
+          TabOrder = 2
         end
       end
       object AbaBuscar: TTabSheet
@@ -152,5 +153,19 @@ object Form1: TForm1
         ImageIndex = 2
       end
     end
+  end
+  object ADOConnection: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=SenhaF0rte123;Persist Security Info' +
+      '=True;User ID=sa;Initial Catalog=lab;Network Address=localhost'
+    Provider = 'SQLOLEDB.1'
+    Left = 704
+  end
+  object ADOQuery: TADOQuery
+    Connection = ADOConnection
+    Parameters = <>
+    Left = 512
+    Top = 8
   end
 end
