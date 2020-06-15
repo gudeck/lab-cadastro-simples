@@ -67,9 +67,10 @@ object Form1: TForm1
       Top = 1
       Width = 483
       Height = 238
-      ActivePage = AbaDados
+      ActivePage = AbaBuscar
       Align = alClient
       TabOrder = 0
+      OnChange = ContainerCrudChange
       ExplicitLeft = 2
       ExplicitTop = 6
       ExplicitWidth = 485

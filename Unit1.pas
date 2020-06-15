@@ -37,10 +37,12 @@ type
     procedure LimparCadastro;
     procedure LimparBusca;
     procedure PreencherCadastro;
+    procedure ControleBotoes(Inserir: Boolean; Novo: Boolean; Listar: Boolean);
     procedure ButtonInserirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ButtonIdClick(Sender: TObject);
     procedure ButtonNomeClick(Sender: TObject);
+    procedure ContainerCrudChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -95,10 +97,31 @@ begin
   PreencherCadastro;
 end;
 
+procedure TForm1.ControleBotoes(Inserir: Boolean; Novo: Boolean;
+  Listar: Boolean);
+begin
+  ButtonInserir.Enabled := Inserir;
+  ButtonNovo.Enabled := Novo;
+  ButtonListar.Enabled := Listar;
+end;
+
+procedure TForm1.ContainerCrudChange(Sender: TObject);
+begin
+  case ContainerCrud.ActivePageIndex of
+    0:
+      ControleBotoes(true, false, false);
+    1:
+      ControleBotoes(false, true, false);
+    2:
+      ControleBotoes(false, true, true)
+  end;
+end;
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   EditDataCriacao.Date := Now;
   ContainerCrud.ActivePageIndex := 0;
+  ContainerCrudChange(Sender);
 end;
 
 procedure TForm1.LimparCadastro;
