@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Cadastro de Disciplinas'
-  ClientHeight = 461
-  ClientWidth = 734
+  ClientHeight = 311
+  ClientWidth = 482
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,20 +11,22 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   DesignSize = (
-    734
-    461)
+    482
+    311)
   PixelsPerInch = 96
   TextHeight = 13
   object PanelBotoes: TPanel
     Left = 0
     Top = 0
-    Width = 734
+    Width = 482
     Height = 75
     Anchors = [akLeft, akTop, akRight]
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 734
     object ButtonInserir: TButton
       Left = 25
       Top = 25
@@ -54,22 +56,29 @@ object Form1: TForm1
   object PanelCrud: TPanel
     Left = 0
     Top = 75
-    Width = 737
-    Height = 390
+    Width = 485
+    Height = 240
     Anchors = [akLeft, akTop, akRight, akBottom]
     TabOrder = 1
+    ExplicitWidth = 737
+    ExplicitHeight = 390
     object ContainerCrud: TPageControl
       Left = 1
       Top = 1
-      Width = 735
-      Height = 388
+      Width = 483
+      Height = 238
       ActivePage = AbaDados
       Align = alClient
       TabOrder = 0
+      ExplicitLeft = 2
+      ExplicitTop = 6
+      ExplicitWidth = 485
+      ExplicitHeight = 250
       object AbaDados: TTabSheet
         Caption = 'Dados'
+        ExplicitHeight = 205
         object LabelMedia: TLabel
-          Left = 193
+          Left = 232
           Top = 9
           Width = 28
           Height = 13
@@ -79,7 +88,7 @@ object Form1: TForm1
         end
         object LabelDescricao: TLabel
           Left = 20
-          Top = 76
+          Top = 52
           Width = 46
           Height = 13
           Caption = 'Descricao'
@@ -87,7 +96,7 @@ object Form1: TForm1
           ParentColor = False
         end
         object LabelDataCriacao: TLabel
-          Left = 345
+          Left = 292
           Top = 9
           Width = 62
           Height = 13
@@ -98,7 +107,7 @@ object Form1: TForm1
         object EditNome: TLabeledEdit
           Left = 20
           Top = 25
-          Width = 121
+          Width = 198
           Height = 21
           EditLabel.Width = 27
           EditLabel.Height = 13
@@ -109,9 +118,9 @@ object Form1: TForm1
           TabOrder = 0
         end
         object EditMedia: TMaskEdit
-          Left = 193
+          Left = 232
           Top = 25
-          Width = 106
+          Width = 46
           Height = 21
           EditMask = '##.##;0; '
           MaxLength = 5
@@ -120,26 +129,25 @@ object Form1: TForm1
         end
         object EditDescricao: TMemo
           Left = 20
-          Top = 95
+          Top = 71
           Width = 435
           Height = 125
           MaxLength = 400
           TabOrder = 4
         end
         object CheckBoxOpcional: TCheckBox
-          Left = 20
-          Top = 53
-          Width = 97
+          Left = 388
+          Top = 27
+          Width = 67
           Height = 17
           Caption = 'Opcional'
           TabOrder = 3
         end
         object EditDataCriacao: TDateTimePicker
-          Left = 345
+          Left = 292
           Top = 25
-          Width = 110
+          Width = 82
           Height = 21
-          Date = 43995.000000000000000000
           Time = 0.433053587963513600
           TabOrder = 2
         end
@@ -147,10 +155,14 @@ object Form1: TForm1
       object AbaBuscar: TTabSheet
         Caption = 'Buscar'
         ImageIndex = 1
+        ExplicitWidth = 727
+        ExplicitHeight = 360
       end
       object AbaListar: TTabSheet
         Caption = 'Listar'
         ImageIndex = 2
+        ExplicitWidth = 727
+        ExplicitHeight = 360
       end
     end
   end
@@ -160,12 +172,10 @@ object Form1: TForm1
       'Provider=SQLOLEDB.1;Password=SenhaF0rte123;Persist Security Info' +
       '=True;User ID=sa;Initial Catalog=lab;Network Address=localhost'
     Provider = 'SQLOLEDB.1'
-    Left = 704
   end
   object ADOQuery: TADOQuery
     Connection = ADOConnection
     Parameters = <>
-    Left = 512
-    Top = 8
+    Left = 32
   end
 end

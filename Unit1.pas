@@ -30,7 +30,9 @@ type
     LabelDataCriacao: TLabel;
     ADOConnection: TADOConnection;
     ADOQuery: TADOQuery;
+    procedure LimparCadastro;
     procedure ButtonInserirClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,8 +61,28 @@ begin
   ADOQuery.Parameters.ParamByName('dataCriacao').Value :=
     EditDataCriacao.DateTime;
 
-  ADOQuery.ExecSQL;
+  try
+    ADOQuery.ExecSQL;
+    ShowMessage('Disciplina criada com sucesso!');
+    LimparCadastro;
+  except
+    ShowMessage('Falha ao criar disciplina!');
+  end;
 
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  EditDataCriacao.Date := Now;
+end;
+
+procedure TForm1.LimparCadastro;
+begin
+  EditNome.Clear;
+  EditMedia.Clear;
+  EditDataCriacao.Date := Now;
+  CheckBoxOpcional.Checked := false;
+  EditDescricao.Clear;
 end;
 
 end.
