@@ -34,15 +34,19 @@ type
     EditBuscaNome: TLabeledEdit;
     ButtonId: TButton;
     ButtonNome: TButton;
+    EditListagem: TMemo;
     procedure LimparCadastro;
     procedure LimparBusca;
     procedure PreencherCadastro;
+    procedure PreencherListagem;
     procedure ControleBotoes(Inserir: Boolean; Novo: Boolean; Listar: Boolean);
     procedure ButtonInserirClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ButtonIdClick(Sender: TObject);
     procedure ButtonNomeClick(Sender: TObject);
     procedure ContainerCrudChange(Sender: TObject);
+    procedure ButtonNovoClick(Sender: TObject);
+    procedure ButtonListarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -88,6 +92,13 @@ begin
 
 end;
 
+procedure TForm1.ButtonListarClick(Sender: TObject);
+begin
+  ADOQuery.SQL.Text := 'SELECT * FROM lab.cadastro.DISCIPLINA';
+  ADOQuery.Open;
+  PreencherListagem;
+end;
+
 procedure TForm1.ButtonNomeClick(Sender: TObject);
 begin
   ADOQuery.SQL.Text :=
@@ -95,6 +106,12 @@ begin
     EditBuscaNome.Text + '%''';
   ADOQuery.Open;
   PreencherCadastro;
+end;
+
+procedure TForm1.ButtonNovoClick(Sender: TObject);
+begin
+  ContainerCrud.ActivePageIndex := 0;
+  ContainerCrudChange(Sender);
 end;
 
 procedure TForm1.ControleBotoes(Inserir: Boolean; Novo: Boolean;
@@ -151,6 +168,37 @@ begin
 
     ContainerCrud.ActivePageIndex := 0;
     LimparBusca;
+  end
+  else
+    ShowMessage('Não foram encontrados registros.');
+end;
+
+procedure TForm1.PreencherListagem;
+var
+  opcional: String;
+begin
+  if not ADOQuery.IsEmpty then
+  begin
+    ADOQuery.First;
+
+    EditListagem.Lines.Add('Código' + ' - ' + 'Nome' + ' - ' + 'Média' + ' - ' +
+      'Criada em' + ' - ' + 'Opcional');
+
+    while not(ADOQuery.Eof) do
+    begin
+      if ADOQuery.FieldByName('OPCIONAL').AsBoolean then
+        opcional := 'Sim'
+      else
+        opcional := 'Não';
+
+      EditListagem.Lines.Add(IntToStr(ADOQuery.FieldByName('ID').AsInteger) +
+        ' - ' + ADOQuery.FieldByName('NOME').AsString + ' - ' +
+        ADOQuery.FieldByName('MEDIA').AsString + ' - ' +
+        DateToStr(ADOQuery.FieldByName('DATA_CRIACAO').AsDateTime) + ' - ' +
+        opcional);
+      ADOQuery.Next;
+    end;
+
   end
   else
     ShowMessage('Não foram encontrados registros.');

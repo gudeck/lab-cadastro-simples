@@ -43,6 +43,7 @@ object Form1: TForm1
       Height = 25
       Caption = 'Novo'
       TabOrder = 1
+      OnClick = ButtonNovoClick
     end
     object ButtonListar: TButton
       Left = 187
@@ -51,6 +52,7 @@ object Form1: TForm1
       Height = 25
       Caption = 'Listar'
       TabOrder = 2
+      OnClick = ButtonListarClick
     end
   end
   object PanelCrud: TPanel
@@ -67,7 +69,7 @@ object Form1: TForm1
       Top = 1
       Width = 483
       Height = 238
-      ActivePage = AbaBuscar
+      ActivePage = AbaListar
       Align = alClient
       TabOrder = 0
       OnChange = ContainerCrudChange
@@ -201,6 +203,16 @@ object Form1: TForm1
         ImageIndex = 2
         ExplicitWidth = 727
         ExplicitHeight = 360
+        object EditListagem: TMemo
+          Left = 0
+          Top = 0
+          Width = 475
+          Height = 210
+          Align = alClient
+          TabOrder = 0
+          ExplicitWidth = 482
+          ExplicitHeight = 311
+        end
       end
     end
   end
